@@ -27,3 +27,20 @@ let edible = {
 }
 
 console.log(edible.meals[3])
+
+let person1 = {
+  name: 'Benny', 
+  jobTitle: 'Operator 1',
+}
+let person2 = {
+  name: 'Barry', 
+  jobTitle: 'Operator 2',
+}
+let person3 = {
+  name: 'Bobby', 
+  jobTitle: 'Operator 3',
+}
+
+let people = [ person1, person2, person3] 
+
+console.log(people);
