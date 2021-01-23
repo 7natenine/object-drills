@@ -20,3 +20,10 @@ let gibber = {
 // for (let prop in gibber) {
 //   console.log(`${prop}: ${gibber[prop]}`);
 // } 
+
+let edible = {
+  meals : ['breakfast', 'second breakfast', 'elevenses', 'lunch',
+            'afternoon tea', 'dinner', 'supper']
+}
+
+console.log(edible.meals[3])
