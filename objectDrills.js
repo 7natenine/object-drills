@@ -26,21 +26,37 @@ let edible = {
             'afternoon tea', 'dinner', 'supper']
 }
 
-console.log(edible.meals[3])
+// console.log(edible.meals[3])
 
 let person1 = {
   name: 'Benny', 
   jobTitle: 'Operator 1',
+  boss: 'John'
 }
 let person2 = {
   name: 'Barry', 
   jobTitle: 'Operator 2',
+  boss: 'Benny'
 }
 let person3 = {
   name: 'Bobby', 
   jobTitle: 'Operator 3',
+  boss: 'Barry'
+}
+let person4 = { 
+  name: 'John',
+  jobTitle: 'Owner'
 }
 
-let people = [ person1, person2, person3] 
+let people = [ person1, person2, person3, person4] 
 
-console.log(people);
+for (indiv in people){
+  if (!people[indiv].boss){
+    console.log(`${people[indiv].jobTitle} ${people[indiv].name} doesn't report to anybody. `);
+  }
+  else
+    console.log(`${people[indiv].jobTitle} ${people[indiv].name} report to ${people[indiv].boss}. `)
+}
+
+// console.log(people);
+
