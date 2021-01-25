@@ -1,3 +1,5 @@
+const { create } = require("domain");
+
 let loaf = {
   flour: 300,
   water: 210,
@@ -89,5 +91,51 @@ let accum = ''
   return accum
 }
 
-console.log(decodeWords('cycle cycle cycle bite aaron'))
+// console.log(decodeWords('cycle cycle cycle bite aaron'))
 // console.log(decode('cycle'))
+
+function createCharacter (name, nickname, race, origin, attack, defense, weapon){
+  return {
+    name: name,
+    nickname: nickname,
+    race: race,
+    origin: origin,
+    attack: attack,
+    defense: defense,
+    weapon: weapon,
+    describe : () => {
+      console.log(`${name} is a ${race} from ${origin} who uses a ${weapon}`);
+    },
+    evaluateFight : (character) => { 
+      let opp = this.attack - character.defense;
+      let you = character.attack - this.defense;
+
+      if (opp < 0){
+        opp = 0;
+      }
+      if (you < 0){
+        you = 0;
+      }
+      console.log(`Your opponent takes ${opp} damage and you receive ${you} damage`)
+    }
+  };
+};
+
+// let characters = createCharacter('Gandalf the White','gandalf','wizard','Middle Earth','10','6')
+let characters = [createCharacter('Gandalf the White','gandalf','wizard','Middle Earth','10','6','wizard staff'),
+                  createCharacter('Bilbo Baggins','bilbo','Hobbit','The Shire','2','1','Ring'),
+                  createCharacter('Frodo Baggins','frodo','Hobbit','The Shire','3','2','Barrow Blade'),
+                  createCharacter('Aragorn son of Arathorn','aragorn','Man','Dunnedain','6','8','Anduril'),
+                  createCharacter('Legolas','legolas','elf','Woodland Realm','8','5','Bow and Arrow'),]
+
+characters.push(createCharacter('Arwen Undomeil', 'arwen', 'Half-Elf', 'Rivendell','','',''))
+
+characters.find(element => element.nickname == 'aragorn').describe();
+characters.find(element => element.nickname == 'arwen' ).weapon = 'Hadhafang';
+
+// console.log('Characters that are hobbits:\n',characters.filter(element => element.race === 'Hobbit'));
+// console.log('\n\n\n');
+// console.log('Characters with attack above 5:\n',characters.filter(element => element.attack > 5))
+
+console.log(characters)
+
