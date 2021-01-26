@@ -130,12 +130,41 @@ let characters = [createCharacter('Gandalf the White','gandalf','wizard','Middle
 
 characters.push(createCharacter('Arwen Undomeil', 'arwen', 'Half-Elf', 'Rivendell','','',''))
 
-characters.find(element => element.nickname == 'aragorn').describe();
+// characters.find(element => element.nickname == 'aragorn').describe();
 characters.find(element => element.nickname == 'arwen' ).weapon = 'Hadhafang';
 
 // console.log('Characters that are hobbits:\n',characters.filter(element => element.race === 'Hobbit'));
 // console.log('\n\n\n');
 // console.log('Characters with attack above 5:\n',characters.filter(element => element.attack > 5))
 
-console.log(characters)
+// console.log(characters)
 
+const HEROES = [
+  { id: 1, name: 'Captain America', squad: 'Avengers' },
+  { id: 2, name: 'Iron Man', squad: 'Avengers' },
+  { id: 3, name: 'Spiderman', squad: 'Avengers' },
+  { id: 4, name: 'Superman', squad: 'Justice League' },
+  { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+  { id: 6, name: 'Aquaman', squad: 'Justice League' },
+  { id: 7, name: 'Hulk', squad: 'Avengers' },
+];
+
+function findOne (arr,query) {
+    let hero = null;
+    
+    arr.find(element => {
+    let result = true;
+      for(let x in query){
+        console.log(x,'here')
+        if(element[x] != query[x]){
+          result = false;
+        }
+      }
+      if (result){
+        hero = element
+      }
+    });
+  return hero;
+}
+
+console.log(findOne(HEROES, { name: 'Captain America'}));
